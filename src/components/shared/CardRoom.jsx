@@ -36,11 +36,10 @@ function CardRoom({ rooms, variant = 'defualt' }) {
     <div
       className={
         variant == 'book'
-          ? `${
-              rooms.length > 1
-                ? styles['carrousel-swipe']
-                : styles['carrousel-swipe-one-item']
-            }`
+          ? `${rooms.length > 1
+            ? styles['carrousel-swipe']
+            : styles['carrousel-swipe-one-item']
+          }`
           : null
       }
     >
@@ -50,11 +49,11 @@ function CardRoom({ rooms, variant = 'defualt' }) {
             <div className={styles['room-card-wrapper']}>
               <div className={styles['room-card']}>
                 <div className={styles['room-card-number']}>
-                  <span>{room?.name?.split(' ')[1]?.slice(1)}</span>
+                  <span>{room[`name-${i18n.language}`]?.split(' ')[1]?.slice(1)}</span>
                 </div>
                 <h3 className={styles['room-card-heading']}>{t('Room')}</h3>
                 <div className={styles['room-card-body']}>
-                  <div className={styles['room-card-illustration']} style={{"--bg": `url('${room["bg"]}')`}}>
+                  <div className={styles['room-card-illustration']} style={{ "--bg": `url('${room["bg"]}')` }}>
                   </div>
                   <ul className={styles['room-card-features']}>
                     <li className={`${styles['max']}`}>
@@ -350,11 +349,11 @@ function CardRoom({ rooms, variant = 'defualt' }) {
                         paddingRight: '44px',
                       }}
                       data-cta-room={index}
-                      href={`contact.php?room=${room?.name?.split(' ')[1]?.slice(1)}`}
+                      href={`contact.php?room=${room[`name-${i18n.language}`]?.split(' ')[1]?.slice(1)}`}
                       onClick={handleClickBookCTA}
                       className={styles['quick-link-check-availability']}
                     >
-                      Book
+                      {t('Book')}
                     </a>
                   )}
                 </div>
